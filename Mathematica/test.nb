@@ -1,0 +1,454 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15872,        445]
+NotebookOptionsPosition[     15292,        420]
+NotebookOutlinePosition[     15636,        435]
+CellTagsIndexPosition[     15593,        432]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"steadyStateEqns", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"pibn", "*", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "pic"}], ")"}], "*", "lambda"}], "\[Equal]", 
+       RowBox[{"picn", "*", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "pnot"}], ")"}], "*", "mun"}]}], ",", 
+      RowBox[{
+       RowBox[{"pibd", "*", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "pic"}], ")"}], "*", "lambda"}], "\[Equal]", 
+       RowBox[{"picd", "*", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "pnot"}], ")"}], "*", "mud"}]}], ",", 
+      RowBox[{
+       RowBox[{"pimonebn", " ", "*", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "pnot"}], ")"}], "*", "p"}], " ", "\[Equal]", " ", 
+       RowBox[{
+        RowBox[{"pibn", " ", "*", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", "pnot"}], ")"}], " ", "*", " ", "p"}], "  ", "+", 
+        " ", 
+        RowBox[{"pibn", " ", "*", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", "pic"}], ")"}], " ", "*", " ", "lambda"}]}]}], 
+      ",", 
+      RowBox[{
+       RowBox[{"pimonebd", " ", "*", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "pnot"}], ")"}], "*", "p"}], " ", "\[Equal]", " ", 
+       RowBox[{
+        RowBox[{"pibd", " ", "*", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", "pnot"}], ")"}], " ", "*", " ", "p"}], "  ", "+", 
+        " ", 
+        RowBox[{"pibd", " ", "*", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", "pic"}], ")"}], " ", "*", " ", "lambda"}]}]}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"picd", "+", "picn"}], "\[Equal]", "pic"}]}], "}"}], " ", "/.",
+     " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"pibn", " ", "\[Rule]", " ", 
+       SubsuperscriptBox["\[Rho]", "i", 
+        SubscriptBox["B", "N"]]}], ",", 
+      RowBox[{"pibd", " ", "\[Rule]", " ", 
+       SubsuperscriptBox["\[Rho]", "i", 
+        SubscriptBox["B", "D"]]}], ",", " ", 
+      RowBox[{"picn", " ", "\[Rule]", " ", 
+       SubsuperscriptBox["\[Rho]", "i", 
+        SubscriptBox["C", "N"]]}], ",", " ", 
+      RowBox[{"picd", " ", "\[Rule]", " ", 
+       SubsuperscriptBox["\[Rho]", "i", 
+        SubscriptBox["C", "D"]]}], ",", " ", 
+      RowBox[{"mun", " ", "\[Rule]", " ", 
+       SubscriptBox["\[Mu]", "N"]}], ",", " ", 
+      RowBox[{"mud", " ", "\[Rule]", " ", 
+       SubscriptBox["\[Mu]", "D"]}], ",", " ", 
+      RowBox[{"pimonebd", " ", "\[Rule]", " ", 
+       SubsuperscriptBox["\[Rho]", 
+        RowBox[{"i", "-", "1"}], 
+        SubscriptBox["B", "D"]]}], ",", " ", 
+      RowBox[{"pimonebn", " ", "\[Rule]", " ", 
+       SubsuperscriptBox["\[Rho]", 
+        RowBox[{"i", "-", "1"}], 
+        SubscriptBox["B", "N"]]}], ",", " ", 
+      RowBox[{"pnot", " ", "\[Rule]", " ", 
+       SubscriptBox["\[Rho]", "0"]}], ",", " ", 
+      RowBox[{"pic", " ", "\[Rule]", " ", 
+       SubsuperscriptBox["\[Rho]", "i", "C"]}], ",", " ", 
+      RowBox[{"lambda", " ", "\[Rule]", " ", "\[Lambda]"}]}], "}"}]}]}], 
+  "\n"}]], "Input",
+ CellChangeTimes->{{3.6732641716742115`*^9, 3.6732642421030035`*^9}, {
+  3.673264324659836*^9, 3.673264485746708*^9}, {3.6732645710271015`*^9, 
+  3.6732647665996237`*^9}, {3.673265330203026*^9, 3.6732653306453*^9}, {
+  3.6732663089762955`*^9, 3.6732664148757086`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Lambda]", " ", 
+     SubsuperscriptBox["\[Rho]", "i", 
+      SubscriptBox["B", "N"]], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubsuperscriptBox["\[Rho]", "i", "C"]}], ")"}]}], "\[Equal]", 
+    RowBox[{
+     SubscriptBox["\[Mu]", "N"], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Rho]", "0"]}], ")"}], " ", 
+     SubsuperscriptBox["\[Rho]", "i", 
+      SubscriptBox["C", "N"]]}]}], ",", 
+   RowBox[{
+    RowBox[{"\[Lambda]", " ", 
+     SubsuperscriptBox["\[Rho]", "i", 
+      SubscriptBox["B", "D"]], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubsuperscriptBox["\[Rho]", "i", "C"]}], ")"}]}], "\[Equal]", 
+    RowBox[{
+     SubscriptBox["\[Mu]", "D"], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Rho]", "0"]}], ")"}], " ", 
+     SubsuperscriptBox["\[Rho]", "i", 
+      SubscriptBox["C", "D"]]}]}], ",", 
+   RowBox[{
+    RowBox[{"p", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Rho]", "0"]}], ")"}], " ", 
+     SubsuperscriptBox["\[Rho]", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", "i"}], 
+      SubscriptBox["B", "N"]]}], "\[Equal]", 
+    RowBox[{
+     RowBox[{"p", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        SubscriptBox["\[Rho]", "0"]}], ")"}], " ", 
+      SubsuperscriptBox["\[Rho]", "i", 
+       SubscriptBox["B", "N"]]}], "+", 
+     RowBox[{"\[Lambda]", " ", 
+      SubsuperscriptBox["\[Rho]", "i", 
+       SubscriptBox["B", "N"]], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        SubsuperscriptBox["\[Rho]", "i", "C"]}], ")"}]}]}]}], ",", 
+   RowBox[{
+    RowBox[{"p", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Rho]", "0"]}], ")"}], " ", 
+     SubsuperscriptBox["\[Rho]", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", "i"}], 
+      SubscriptBox["B", "D"]]}], "\[Equal]", 
+    RowBox[{
+     RowBox[{"p", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        SubscriptBox["\[Rho]", "0"]}], ")"}], " ", 
+      SubsuperscriptBox["\[Rho]", "i", 
+       SubscriptBox["B", "D"]]}], "+", 
+     RowBox[{"\[Lambda]", " ", 
+      SubsuperscriptBox["\[Rho]", "i", 
+       SubscriptBox["B", "D"]], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        SubsuperscriptBox["\[Rho]", "i", "C"]}], ")"}]}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["\[Rho]", "i", 
+      SubscriptBox["C", "D"]], "+", 
+     SubsuperscriptBox["\[Rho]", "i", 
+      SubscriptBox["C", "N"]]}], "\[Equal]", 
+    SubsuperscriptBox["\[Rho]", "i", "C"]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6732645727134275`*^9, {3.673264740150569*^9, 3.673264769417055*^9}, 
+   3.6732648878282003`*^9, 3.6732653351768293`*^9, 3.6732664181527805`*^9, {
+   3.6732669051265097`*^9, 3.673266917299399*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TeXForm", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.6732649140104723`*^9, 3.673264928627839*^9}}],
+
+Cell["\<\
+\\left\\{\\lambda  \\left(1-\\rho _i^C\\right) \\rho _i^{B_N}=\\left(1-\\rho \
+_0\\right)
+   \\mu _N \\rho _i^{C_N},\\lambda  \\left(1-\\rho _i^C\\right) \\rho
+   _i^{B_D}=\\left(1-\\rho _0\\right) \\mu _D \\rho _i^{C_D},p \\left(1-\\rho \
+_0\\right)
+   \\rho _{i-1}^{B_N}=\\lambda  \\left(1-\\rho _i^C\\right) \\rho _i^{B_N}+p
+   \\left(1-\\rho _0\\right) \\rho _i^{B_N},p \\left(1-\\rho _0\\right) \\rho
+   _{i-1}^{B_D}=\\lambda  \\left(1-\\rho _i^C\\right) \\rho _i^{B_D}+p \
+\\left(1-\\rho
+   _0\\right) \\rho _i^{B_D},\\rho _i^{C_D}+\\rho _i^{C_N}=\\rho \
+_i^C\\right\\}\
+\>", "Output",
+ CellChangeTimes->{
+  3.6732649295395117`*^9, 3.6732653391201615`*^9, {3.6732669054879603`*^9, 
+   3.673266917705665*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pBn", "[", "i_", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "lambda"}], " ", "mud", " ", "mun", " ", "pimonebn"}], 
+      "-", 
+      RowBox[{"mud", " ", "mun", " ", "p", " ", "pimonebn"}], "+", 
+      RowBox[{
+      "lambda", " ", "mun", " ", "p", " ", "pimonebd", " ", "pimonebn"}], "+", 
+      RowBox[{"lambda", " ", "mud", " ", "p", " ", 
+       SuperscriptBox["pimonebn", "2"]}], "+", 
+      RowBox[{"mud", " ", "mun", " ", "p", " ", "pimonebn", " ", "pnot"}], 
+      "+", 
+      RowBox[{"\[Sqrt]", 
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"lambda", " ", "mud", " ", "mun", " ", "pimonebn"}], "+", 
+            RowBox[{"mud", " ", "mun", " ", "p", " ", "pimonebn"}], "-", 
+            RowBox[{
+            "lambda", " ", "mun", " ", "p", " ", "pimonebd", " ", 
+             "pimonebn"}], "-", 
+            RowBox[{"lambda", " ", "mud", " ", "p", " ", 
+             SuperscriptBox["pimonebn", "2"]}], "-", 
+            RowBox[{
+            "mud", " ", "mun", " ", "p", " ", "pimonebn", " ", "pnot"}]}], 
+           ")"}], "2"], "-", 
+         RowBox[{"4", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+            RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], 
+           ")"}], " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "mud"}], " ", "mun", " ", "p", " ", 
+             SuperscriptBox["pimonebn", "2"]}], "+", 
+            RowBox[{"mud", " ", "mun", " ", "p", " ", 
+             SuperscriptBox["pimonebn", "2"], " ", "pnot"}]}], ")"}]}]}], 
+        ")"}]}]}], ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{"2", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+        RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], ")"}]}], 
+     ")"}]}], " ", "//.", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"pimonebn", " ", "\[Rule]", " ", 
+      RowBox[{"pBn", "[", 
+       RowBox[{"i", "-", "1"}], "]"}]}], ",", " ", 
+     RowBox[{"pimonebd", " ", "\[Rule]", " ", 
+      RowBox[{"pBd", "[", 
+       RowBox[{"i", "-", "1"}], "]"}]}]}], "}"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pBd", "[", "i_", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox["1", "pimonebn"]}], 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+       "lambda", " ", "mud", " ", "mun", " ", "pimonebd", " ", "pimonebn"}], 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+          RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], 
+         ")"}]}]], "+", 
+      FractionBox[
+       RowBox[{
+       "mud", " ", "mun", " ", "p", " ", "pimonebd", " ", "pimonebn"}], 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+          RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], 
+         ")"}]}]], "-", 
+      FractionBox[
+       RowBox[{"lambda", " ", "mun", " ", "p", " ", 
+        SuperscriptBox["pimonebd", "2"], " ", "pimonebn"}], 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+          RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], 
+         ")"}]}]], "-", 
+      FractionBox[
+       RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebd", " ", 
+        SuperscriptBox["pimonebn", "2"]}], 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+          RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], 
+         ")"}]}]], "-", 
+      FractionBox[
+       RowBox[{
+       "mud", " ", "mun", " ", "p", " ", "pimonebd", " ", "pimonebn", " ", 
+        "pnot"}], 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+          RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], 
+         ")"}]}]], "-", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"pimonebd", " ", 
+         RowBox[{"\[Sqrt]", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"lambda", " ", "mud", " ", "mun", " ", "pimonebn"}], 
+               "+", 
+               RowBox[{"mud", " ", "mun", " ", "p", " ", "pimonebn"}], "-", 
+               RowBox[{
+               "lambda", " ", "mun", " ", "p", " ", "pimonebd", " ", 
+                "pimonebn"}], "-", 
+               RowBox[{"lambda", " ", "mud", " ", "p", " ", 
+                SuperscriptBox["pimonebn", "2"]}], "-", 
+               RowBox[{
+               "mud", " ", "mun", " ", "p", " ", "pimonebn", " ", "pnot"}]}], 
+              ")"}], "2"], "-", 
+            RowBox[{"4", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+               RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], 
+              ")"}], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"-", "mud"}], " ", "mun", " ", "p", " ", 
+                SuperscriptBox["pimonebn", "2"]}], "+", 
+               RowBox[{"mud", " ", "mun", " ", "p", " ", 
+                SuperscriptBox["pimonebn", "2"], " ", "pnot"}]}], ")"}]}]}], 
+           ")"}]}]}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"lambda", " ", "mun", " ", "p", " ", "pimonebd"}], "+", 
+           RowBox[{"lambda", " ", "mud", " ", "p", " ", "pimonebn"}]}], 
+          ")"}]}], ")"}]}]}], ")"}]}], " ", "//.", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"pibn", " ", "\[Rule]", " ", 
+      SubsuperscriptBox["\[Rho]", "i", 
+       SubscriptBox["B", "N"]]}], ",", 
+     RowBox[{"pibd", " ", "\[Rule]", " ", 
+      SubsuperscriptBox["\[Rho]", "i", 
+       SubscriptBox["B", "D"]]}], ",", " ", 
+     RowBox[{"picn", " ", "\[Rule]", " ", 
+      SubsuperscriptBox["\[Rho]", "i", 
+       SubscriptBox["C", "N"]]}], ",", " ", 
+     RowBox[{"picd", " ", "\[Rule]", " ", 
+      SubsuperscriptBox["\[Rho]", "i", 
+       SubscriptBox["C", "D"]]}], ",", " ", 
+     RowBox[{"mun", " ", "\[Rule]", " ", 
+      SubscriptBox["\[Mu]", "N"]}], ",", " ", 
+     RowBox[{"mud", " ", "\[Rule]", " ", 
+      SubscriptBox["\[Mu]", "D"]}], ",", " ", 
+     RowBox[{"pimonebd", " ", "\[Rule]", " ", 
+      SubsuperscriptBox["\[Rho]", 
+       RowBox[{"i", "-", "1"}], 
+       SubscriptBox["B", "D"]]}], ",", " ", 
+     RowBox[{"pimonebn", " ", "\[Rule]", " ", 
+      SubsuperscriptBox["\[Rho]", 
+       RowBox[{"i", "-", "1"}], 
+       SubscriptBox["B", "N"]]}], ",", " ", 
+     RowBox[{"pnot", " ", "\[Rule]", " ", 
+      SubscriptBox["\[Rho]", "0"]}], ",", " ", 
+     RowBox[{"pic", " ", "\[Rule]", " ", 
+      SubsuperscriptBox["\[Rho]", "i", "C"]}], ",", " ", 
+     RowBox[{"lambda", " ", "\[Rule]", " ", "\[Lambda]"}]}], 
+    "}"}]}]}]}], "Input",
+ CellChangeTimes->{3.6733573755098643`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.673357392381891*^9, 3.6733574342177305`*^9}}],
+
+Cell[BoxData["0.`"], "Output",
+ CellChangeTimes->{3.67335742813442*^9}]
+}, Open  ]]
+},
+WindowSize->{1014, 813},
+WindowMargins->{{Automatic, -7}, {Automatic, 10}},
+FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 3315, 84, 168, "Input"],
+Cell[3898, 108, 2839, 85, 60, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6774, 198, 128, 2, 31, "Input"],
+Cell[6905, 202, 724, 15, 147, "Output"]
+}, Open  ]],
+Cell[7644, 220, 7439, 189, 504, "Input"],
+Cell[CellGroupData[{
+Cell[15108, 413, 94, 1, 31, "Input"],
+Cell[15205, 416, 71, 1, 45, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
