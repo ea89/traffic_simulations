@@ -1,0 +1,19 @@
+graph1.jpg: This graph shows how changing the relative ratio can affect the parking success rate. For this graph, the following specs were used:
+lambda = 0.1;
+mun = 0.005;
+mud = 0.5;
+p = 0.8;
+Nt = 20;
+L = 30;
+d = 0.8;
+
+
+
+graph3.eps: 
+lambda = 0.5;
+mun = 0.1;
+mud = 0.001;
+p = 0.4;
+L = 50;
+d = 0.1;
+N = [5, 30, 50]; 

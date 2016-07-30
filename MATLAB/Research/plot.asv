@@ -1,0 +1,19 @@
+%%Plot the rate to town and rate to city for ranging values of Nt
+
+
+lambda = 0.5
+mun = 0.1
+mud = 0.001
+p = 0.4
+L = 10
+d = 0.1
+
+Nt = 1:L
+Nv = 1:L
+
+
+
+ [pnot, pBn, pBd, pCn, pCd] = pB(lambda, mun, mud, p, Nt, L, d, Nv)
+ 
+ rateTown = sum((pBn + pBd) .* lambda .* (1 - pCn))
+ rateCity = sum(Nv/L * p * (1 - pnot))

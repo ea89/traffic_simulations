@@ -1,0 +1,158 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{verbatim}
+%opening
+\title{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\section*{Introduction}
+
+\begin{comment}
+"What was I studying? Why was it an important question? What did we know about it before I did this study? How will this study advance our knowledge?"
+\end{comment}
+
+Totally asymmetric exclusion process (TASEP) has been widely used in various field, ranging from chemistry \cite{chemCoupled} to model vehicular networks \cite{statPhys}. Originated from statistical physics, an instance of TASEP allows making macroscopic behavior of the system based upon the microscopic behavior of individual particles. As a related problem, we explore the problem of parking; namely, given $K$ parking spots in a road of length $L$, we explore the following phenomena:
+
+a) How often do people find parking?
+b) What is the overall road density?
+c) Which parking spots are preferred? 
+d) How does parallel updating compare to random updating for TASEP?
+
+TASEP with parallel updating has been studied before \cite{parallelTASEP} to model traffic. This model is equivalent to Nagel-Schreckenberg model with a maximum velocity of 1 \cite{statPhys}. In particular, it has been shown that there are phase transitions depending on the car income and departure probabilities. Here, we show what happens to these phase transitions when the phenomenon of parking is introduced. 
+
+\section*{Model}
+
+Our model consists of two lanes, $L_1$ and $L_2$ and our lanes consist of cars $c$. The idea of the model is that $L_1$ is the driving lane, and $L_2$ is the parking lane. As such, cars move on $L_1$ until they find parking, and then they park to $L_2$. If they are already on $L_2$, then they park there for some time $T_{\text{park}}$ where $T_{\text{park}}$ is exponentially distributed with rate $p$. For modeling purposes, since time will be discretized, we need to pick $p \leq 1$. If high departure rates are desired, then the time for each timestep can be scaled instead. For convenience purposes, we say that both our lanes have the same length. Once they are done parking, they are assumed to leave the street as soon as possible.
+
+From a mathematical standpoint, define $\eta_{L_i}(t, x), i \in \{1,2\}, t \in R^+, x \in \{1,..,L\}$ to be the state function.  
+$\eta_{L_i}(t,x) = 0$ if the $i$ th lane at position $x$ is unoccupied at time $t$, and 1 if it is occupied. For our analysis, since every event has an exponential rate associated to it, we can come up with a set of $t_k$s where $t_k$s are exponentially distributed on $R^+$. So, instead of having our state function take continuous $x$s, we can have it take an index $k$ to indicate $k$th time step. Thus, we can reexpress $\eta_{L_i}$ as $\eta_{L_i}(t,k) = 0$ if the $i$ th lane at position $x$ is unoccupied at time $t_k$, and 1 if it is occupied.
+
+Now, at each time step, perform the following update rules:
+
+a) A given car $c$ at some position on $L_1$ checks to see if there is already a car in $L_2$. If so, it parks there by switching there. If not, it checks if there is a car in $x+1$ in $L_1$ if so, it moves the car.
+
+b) A given car $c$ at some position on $L_2$ has a Bernoulli trial with success probability $p$. If it succeeds, it leaves the simulation; else, it stays.
+
+c) On the boundaries of $L_1$, if there is not a car on $x = 1$, have a Bernoulli trial with success probability $\alpha$. If it holds, then place a car on $L_1$ at $x = 0$. If there is a car on $x = L$, have a Bernoulli trial with success probability $\beta$. If it holds, then take the car from $L_1$ at $x = L$.
+
+\section*{Simulation data}
+
+a) How often do people find parking?
+
+Depends on p, a and b.
+
+b) What is the overall road density?
+
+Depends on p, a and b. 
+
+c) Which parking spots are preferred? 
+
+Uniform after some time. 
+
+d) How does parallel updating compare to random updating for TASEP?
+
+Can't test because of computer.
+
+e) Matching to the actual literature
+
+
+Is it OK to have a p
+
+Say you want to park: Hardly any cars; bunch of cars vs many cars but available spots.
+
+\section*{Discussion}
+
+
+
+
+\section*{Summary}
+
+
+
+\section*{Future Work}
+
+To further investigate the parking problem, we would like to use the queuing networks and Petri nets. Queuing networks can give rise to analytically solvable Markov chains that can explain the boundary conditions and Petri nets can allow for more generalized models while observing potential deadlock states in deterministic modeling systems. 
+
+In terms of the simulation, we can modify the simulation such that once a car is done parking, with probability $g$ it can keep going on the road (without looking for parking). Also, perhaps, instead of parking every time after seeing a park, we can park with probability h, and then compare these two proposed models. We can also loop the lanes to reflect the behavior of not finding parking and going through the same street again. We can also modify our simulation so that it has a variable upper velocity limit (like Nagel-Schreckenberg model). We can also allow for random parking in a continuous setting \cite{randPark}. Finally, we can have the lengths of the parking lane be different than the actual lane and have a mapping to indicate which cars can park to which spot at some arbitrary time.
+
+
+
+\begin{comment}
+
+\section*{Stationary properties}
+
+According to the paper Parallel Coupling of Symmetric and Asymmetric Exclusion Processes, we can find the long term behavior of a coupled system by looking at the particle currents. For us, it will be the following:
+
+\begin{align}
+	J_{entrance} &= \alpha(P_{00} + P_{01})\\
+	J_{bulk} &= (P_{11}) (P_{00} + P_{01})\\
+	J_{exit} &= \beta(P_{11} )\\
+\end{align}
+
+where the equations can be explained as the following:\\
+
+(1) = The rate in which cars come in is the probability that the first slot is empty times the rate ($\alpha$)\\
+(2) = The rate in which cars move is the rate that previous slot has been full, the parked car doesn't leave and the next slot has an empty room.\\
+(3) = The rate in which cars exit is the probability that the last slot is full times the rate in which they leave ($\beta$).\\
+
+Additionally, the state transitions not on the boundaries will help us come up with the long term behavior of the system (and perhaps estimate the expected number of cars on the road at a given time).
+
+
+\begin{align*}
+	\frac{dP_{11}}{dt} &= P_{11}(P_{01}) - P_{11}(P_{01} + P_{00})  \\
+	\frac{dP_{10}}{dt} &= P_{11}(P_{00}) + P_{11} p - P_{10}  \\
+	\frac{dP_{10}}{dt} &= P_{11}(P_{00}) + P_{11} p - P_{10}  \\
+\end{align*}
+
+(1) = The rate in for $P_{11}$ is if the previous one is $P_{11}$ and this one is just $P_{01}$ and the rate out of it is if this one is 11 and the next one has an empty spot in the first place.
+(2) =  The rate in which only the road is filled is if for the previous spot, it was 11 and this spot was a 00, or this was a 11 and one of the cars disappeared with rate p. The rate out is the actual probability that this state was in 10, since that is a transitive state (it is an unstable state since the car will ideally park immediately to the parking spot.)
+(3) = 
+
+
+\end{comment}
+
+
+
+
+\begin{thebibliography}{9}
+\bibitem{nagelGeneric}
+STILL FLOWING: APPROACHES TO TRAFFIC FLOW AND
+TRAFFIC JAM MODELING
+
+\bibitem{statPhys}	
+Statistical physics of vehicular traffic and some related systems
+
+\bibitem{chemCoupled}
+Two-channel totally asymmetric simple exclusion
+processes
+
+\bibitem{parallelTASEP}
+Exact domain wall theory for deterministic TASEP with parallel update
+
+\bibitem{modelPark}
+Modeling Parking 
+
+\bibitem{adsorption}
+Positive congestion effect on a totally asymmetric simple exclusion process with an adsorption lane
+
+\bibitem{randPark}
+The Random Parking Problem 
+
+\bibitem{parkGarage}
+Macroscopic car condensation in a parking garage
+
+
+	
+\end{thebibliography}
+
+
+
+\end{document}
