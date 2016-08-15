@@ -6,20 +6,7 @@ import xml.etree.ElementTree as ET
 import math
 import sys
 import shutil
-
-X = 'x'
-Y = 'y'
-NODE_ID = 'id'
-EDGE_ID = 'id'
-FROM = 'from'
-TO = 'to'
-
-L_INITIAL = 10
-L_END = 0
-THETA = math.pi/2
-L_PARK = 50
-L_DIST = 50
-
+from ParkingConstants import *
 
 
 
@@ -127,20 +114,72 @@ class MapXMLReader:
 
                 #add parking spots recursively
 
-                self.__add_recursive_parking_spots(self, current_point, self._node_map(to_id), num_park_stops, end_l, theta, l_park, l_dist)
+                self.__add_recursive_parking_spots(current_point, self._node_map[to_id], num_park_stops, end_l, theta, l_park, l_dist, child, 1)
+
+                self._node_tree.write("data/{}.nod.xml".format(self._prefix))
+                self._edge_tree.write("data/{}.edg.xml".format(self._prefix))
 
 
-    def __add_recursive_parking_spots(self, curr_pt, final_pt, num_park_stops, end_l, theta, l_park, l_dist):
+    def __add_recursive_parking_spots(self, curr_pt, final_pt, num_park_stops, end_l, theta, l_park, l_dist, edge, count):
 
         #base case: check if there is any more room to add parking spots or parking spots left to add
-        self.__calculate_distance()
         distance_until_end = math.hypot(curr_pt[0] - final_pt[0], curr_pt[1] - final_pt[1])
-        distance_of_parking_and_endspace = end_l + 2*math.cos(l_dist) + l_park
+        distance_of_parking_and_endspace = end_l + 2*math.cos(theta) * l_dist + l_park
         if num_park_stops <= 0 or distance_until_end <= distance_of_parking_and_endspace:
             return
 
+        #otherwise, add a new parking spot
 
+        #1) add the first node away
+        edge_id = edge.get(EDGE_ID)
+
+        self._add_new_node(count, curr_pt, edge_id, PARKING_NODE_ONE_LABEL)
+
+        #2) add the second node away
+
+        slope = self.__angle_of_lane(edge.get(FROM), edge.get(TO))
+
+        curr_pt = (curr_pt[0] + math.cos(theta + slope) * l_dist,
+                   curr_pt[1] + math.sin(theta + slope) * l_dist)
+
+        self._add_new_node(count, curr_pt, edge_id, PARKING_NODE_TWO_LABEL)
+
+        #2) add the third node away
+
+        curr_pt = (curr_pt[0] + math.cos(slope) * l_park,
+                   curr_pt[1] + math.sin(slope) * l_park)
+
+        self._add_new_node(count, curr_pt, edge_id, PARKING_NODE_THREE_LABEL)
+
+        #4) finally add the fourth node
+
+        curr_pt = (curr_pt[0] + math.cos(theta - slope) * l_dist,
+                   curr_pt[1] - math.sin(theta - slope) * l_dist)
+
+        self._add_new_node(count, curr_pt, edge_id, PARKING_NODE_FOUR_LABEL)
+
+        #Now add all the lanes
+
+        self._add_new_edge(count, edge_id, PARKING_NODE_ONE_LABEL, PARKING_EDGE_ONE_LABEL, PARKING_NODE_TWO_LABEL)
+        self._add_new_edge(count, edge_id, PARKING_NODE_TWO_LABEL, PARKING_EDGE_TWO_LABEL, PARKING_NODE_THREE_LABEL)
+        self._add_new_edge(count, edge_id, PARKING_NODE_THREE_LABEL, PARKING_EDGE_THREE_LABEL, PARKING_NODE_FOUR_LABEL)
+
+        self.__add_recursive_parking_spots(curr_pt, final_pt, num_park_stops-1, end_l, theta, l_park, l_dist, edge, count+1)
         pass
+
+    def _add_new_edge(self, count, edge_id, from_node, label, to_node):
+        ET.SubElement(self._edge_root, EDGE_TAG, {EDGE_ID: '{}{}{}'.format(edge_id, label, count),
+                                                  FROM: '{}{}{}'.format(edge_id, from_node, count),
+                                                  TO: '{}{}{}'.format(edge_id, to_node, count),
+                                                  PRIORITY_TAG: MAX_PRIORITY,
+                                                  SPEED_TAG: SPEED,
+                                                  NUM_LANES_TAG: NUM_LANES})
+
+    def _add_new_node(self, count, curr_pt, edge_id, label):
+        ET.SubElement(self._node_root, NODE_TAG, {NODE_ID: '{}{}{}'.format(edge_id, label, count),
+                                                  X: '{}'.format(curr_pt[0]),
+                                                  Y: '{}'.format(curr_pt[1]),
+                                                  NODE_TYPE_TAG: NODE_TYPE})
 
 
 if __name__ == '__main__':
@@ -150,3 +189,5 @@ if __name__ == '__main__':
     self = MapXMLReader(prefix)
 
     self.add_parking_spots()
+
+

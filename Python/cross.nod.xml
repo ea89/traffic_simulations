@@ -1,14 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/nodes_file.xsd">
-   <node id="0" x="0.0" y="0.0"  type="traffic_light"/>
 
-   <node id="1" x="-500.0" y="0.0" type="priority"/>
-   <node id="2" x="+500.0" y="0.0" type="priority"/>
-   <node id="3" x="0.0" y="-500.0" type="priority"/>
-   <node id="4" x="0.0" y="+500.0" type="priority"/>
-   
-   <node id="51" x="-510.0" y="0.0" type="priority"/>
-   <node id="52" x="+510.0" y="0.0" type="priority"/>
-   <node id="53" x="0.0" y="-510.0" type="priority"/>
-   <node id="54" x="0.0" y="+510.0" type="priority"/>  
+<!-- generated on 08/15/16 02:28:37 by SUMO netconvert Version 0.24.0
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="MySUMOFile.net.xml"/>
+    </input>
+
+    <output>
+        <plain-output-prefix value="cross"/>
+    </output>
+
+    <processing>
+        <no-turnarounds value="true"/>
+        <offset.disable-normalization value="true"/>
+    </processing>
+
+</configuration>
+-->
+
+<nodes version="0.13" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/nodes_file.xsd">
+    <node id="0/0" x="0.00" y="0.00" type="priority"/>
+    <node id="0/1" x="0.00" y="400.00" type="priority"/>
+    <node id="0/2" x="0.00" y="800.00" type="priority"/>
+    <node id="0/3" x="0.00" y="1200.00" type="priority"/>
+    <node id="0/4" x="0.00" y="1600.00" type="priority"/>
+    <node id="0/5" x="0.00" y="2000.00" type="priority"/>
+    <node id="0/6" x="0.00" y="2400.00" type="priority"/>
+    <node id="0/7" x="0.00" y="2800.00" type="priority"/>
+    <node id="0/8" x="0.00" y="3200.00" type="priority"/>
+    <node id="0/9" x="0.00" y="3600.00" type="priority"/>
+    <node id="1/0" x="400.00" y="0.00" type="priority"/>
+    <node id="1/1" x="400.00" y="400.00" type="priority"/>
+    <node id="1/2" x="400.00" y="800.00" type="priority"/>
+    <node id="1/3" x="400.00" y="1200.00" type="priority"/>
+    <node id="1/4" x="400.00" y="1600.00" type="priority"/>
+    <node id="1/5" x="400.00" y="2000.00" type="priority"/>
+    <node id="1/6" x="400.00" y="2400.00" type="priority"/>
+    <node id="1/7" x="400.00" y="2800.00" type="priority"/>
+    <node id="1/8" x="400.00" y="3200.00" type="priority"/>
+    <node id="1/9" x="400.00" y="3600.00" type="priority"/>
+    <node id="2/0" x="800.00" y="0.00" type="priority"/>
+    <node id="2/1" x="800.00" y="400.00" type="priority"/>
+    <node id="2/2" x="800.00" y="800.00" type="priority"/>
+    <node id="2/3" x="800.00" y="1200.00" type="priority"/>
+    <node id="2/4" x="800.00" y="1600.00" type="priority"/>
+    <node id="2/5" x="800.00" y="2000.00" type="priority"/>
+    <node id="2/6" x="800.00" y="2400.00" type="priority"/>
+    <node id="2/7" x="800.00" y="2800.00" type="priority"/>
+    <node id="2/8" x="800.00" y="3200.00" type="priority"/>
+    <node id="2/9" x="800.00" y="3600.00" type="priority"/>
+    <node id="3/0" x="1200.00" y="0.00" type="priority"/>
+    <node id="3/1" x="1200.00" y="400.00" type="priority"/>
+    <node id="3/2" x="1200.00" y="800.00" type="priority"/>
+    <node id="3/3" x="1200.00" y="1200.00" type="priority"/>
+    <node id="3/4" x="1200.00" y="1600.00" type="priority"/>
+    <node id="3/5" x="1200.00" y="2000.00" type="priority"/>
+    <node id="3/6" x="1200.00" y="2400.00" type="priority"/>
+    <node id="3/7" x="1200.00" y="2800.00" type="priority"/>
+    <node id="3/8" x="1200.00" y="3200.00" type="priority"/>
+    <node id="3/9" x="1200.00" y="3600.00" type="priority"/>
+    <node id="4/0" x="1600.00" y="0.00" type="priority"/>
+    <node id="4/1" x="1600.00" y="400.00" type="priority"/>
+    <node id="4/2" x="1600.00" y="800.00" type="priority"/>
+    <node id="4/3" x="1600.00" y="1200.00" type="priority"/>
+    <node id="4/4" x="1600.00" y="1600.00" type="priority"/>
+    <node id="4/5" x="1600.00" y="2000.00" type="priority"/>
+    <node id="4/6" x="1600.00" y="2400.00" type="priority"/>
+    <node id="4/7" x="1600.00" y="2800.00" type="priority"/>
+    <node id="4/8" x="1600.00" y="3200.00" type="priority"/>
+    <node id="4/9" x="1600.00" y="3600.00" type="priority"/>
+    <node id="5/0" x="2000.00" y="0.00" type="priority"/>
+    <node id="5/1" x="2000.00" y="400.00" type="priority"/>
+    <node id="5/2" x="2000.00" y="800.00" type="priority"/>
+    <node id="5/3" x="2000.00" y="1200.00" type="priority"/>
+    <node id="5/4" x="2000.00" y="1600.00" type="priority"/>
+    <node id="5/5" x="2000.00" y="2000.00" type="priority"/>
+    <node id="5/6" x="2000.00" y="2400.00" type="priority"/>
+    <node id="5/7" x="2000.00" y="2800.00" type="priority"/>
+    <node id="5/8" x="2000.00" y="3200.00" type="priority"/>
+    <node id="5/9" x="2000.00" y="3600.00" type="priority"/>
+    <node id="6/0" x="2400.00" y="0.00" type="priority"/>
+    <node id="6/1" x="2400.00" y="400.00" type="priority"/>
+    <node id="6/2" x="2400.00" y="800.00" type="priority"/>
+    <node id="6/3" x="2400.00" y="1200.00" type="priority"/>
+    <node id="6/4" x="2400.00" y="1600.00" type="priority"/>
+    <node id="6/5" x="2400.00" y="2000.00" type="priority"/>
+    <node id="6/6" x="2400.00" y="2400.00" type="priority"/>
+    <node id="6/7" x="2400.00" y="2800.00" type="priority"/>
+    <node id="6/8" x="2400.00" y="3200.00" type="priority"/>
+    <node id="6/9" x="2400.00" y="3600.00" type="priority"/>
+    <node id="7/0" x="2800.00" y="0.00" type="priority"/>
+    <node id="7/1" x="2800.00" y="400.00" type="priority"/>
+    <node id="7/2" x="2800.00" y="800.00" type="priority"/>
+    <node id="7/3" x="2800.00" y="1200.00" type="priority"/>
+    <node id="7/4" x="2800.00" y="1600.00" type="priority"/>
+    <node id="7/5" x="2800.00" y="2000.00" type="priority"/>
+    <node id="7/6" x="2800.00" y="2400.00" type="priority"/>
+    <node id="7/7" x="2800.00" y="2800.00" type="priority"/>
+    <node id="7/8" x="2800.00" y="3200.00" type="priority"/>
+    <node id="7/9" x="2800.00" y="3600.00" type="priority"/>
+    <node id="8/0" x="3200.00" y="0.00" type="priority"/>
+    <node id="8/1" x="3200.00" y="400.00" type="priority"/>
+    <node id="8/2" x="3200.00" y="800.00" type="priority"/>
+    <node id="8/3" x="3200.00" y="1200.00" type="priority"/>
+    <node id="8/4" x="3200.00" y="1600.00" type="priority"/>
+    <node id="8/5" x="3200.00" y="2000.00" type="priority"/>
+    <node id="8/6" x="3200.00" y="2400.00" type="priority"/>
+    <node id="8/7" x="3200.00" y="2800.00" type="priority"/>
+    <node id="8/8" x="3200.00" y="3200.00" type="priority"/>
+    <node id="8/9" x="3200.00" y="3600.00" type="priority"/>
+    <node id="9/0" x="3600.00" y="0.00" type="priority"/>
+    <node id="9/1" x="3600.00" y="400.00" type="priority"/>
+    <node id="9/2" x="3600.00" y="800.00" type="priority"/>
+    <node id="9/3" x="3600.00" y="1200.00" type="priority"/>
+    <node id="9/4" x="3600.00" y="1600.00" type="priority"/>
+    <node id="9/5" x="3600.00" y="2000.00" type="priority"/>
+    <node id="9/6" x="3600.00" y="2400.00" type="priority"/>
+    <node id="9/7" x="3600.00" y="2800.00" type="priority"/>
+    <node id="9/8" x="3600.00" y="3200.00" type="priority"/>
+    <node id="9/9" x="3600.00" y="3600.00" type="priority"/>
 </nodes>
